@@ -1,0 +1,152 @@
+[
+    {
+        "total": 0,
+        "healthy": 0,
+        "infected": 0,
+        "dead": 0,
+        "vaccinated": 0,
+        "recovered": 0,
+        "isolated": 0,
+        "days": 0
+    },
+    {
+        "total": 1000,
+        "healthy": 984,
+        "infected": 1,
+        "dead": 0,
+        "vaccinated": 15,
+        "recovered": 0,
+        "isolated": 0.0,
+        "days": 1
+    },
+    {
+        "total": 1000,
+        "healthy": 929,
+        "infected": 1,
+        "dead": 0,
+        "vaccinated": 70,
+        "recovered": 0,
+        "isolated": 0.0,
+        "days": 2
+    },
+    {
+        "total": 1000,
+        "healthy": 878,
+        "infected": 1,
+        "dead": 0,
+        "vaccinated": 121,
+        "recovered": 0,
+        "isolated": 0.0,
+        "days": 3
+    },
+    {
+        "total": 1000,
+        "healthy": 826,
+        "infected": 1,
+        "dead": 0,
+        "vaccinated": 173,
+        "recovered": 0,
+        "isolated": 0.0,
+        "days": 4
+    },
+    {
+        "total": 1000,
+        "healthy": 755,
+        "infected": 1,
+        "dead": 0,
+        "vaccinated": 244,
+        "recovered": 0,
+        "isolated": 0.0,
+        "days": 5
+    },
+    {
+        "total": 1000,
+        "healthy": 682,
+        "infected": 1,
+        "dead": 0,
+        "vaccinated": 317,
+        "recovered": 0,
+        "isolated": 0.0,
+        "days": 6
+    },
+    {
+        "total": 1000,
+        "healthy": 622,
+        "infected": 1,
+        "dead": 0,
+        "vaccinated": 377,
+        "recovered": 0,
+        "isolated": 0.0,
+        "days": 7
+    },
+    {
+        "total": 1000,
+        "healthy": 574,
+        "infected": 1,
+        "dead": 0,
+        "vaccinated": 425,
+        "recovered": 0,
+        "isolated": 0.0,
+        "days": 8
+    },
+    {
+        "total": 1000,
+        "healthy": 524,
+        "infected": 1,
+        "dead": 0,
+        "vaccinated": 475,
+        "recovered": 0,
+        "isolated": 0.0,
+        "days": 9
+    },
+    {
+        "total": 1000,
+        "healthy": 477,
+        "infected": 1,
+        "dead": 0,
+        "vaccinated": 522,
+        "recovered": 0,
+        "isolated": 0.0,
+        "days": 10
+    },
+    {
+        "total": 1000,
+        "healthy": 444,
+        "infected": 1,
+        "dead": 0,
+        "vaccinated": 555,
+        "recovered": 0,
+        "isolated": 0.0,
+        "days": 11
+    },
+    {
+        "total": 1000,
+        "healthy": 404,
+        "infected": 1,
+        "dead": 0,
+        "vaccinated": 595,
+        "recovered": 0,
+        "isolated": 0.0,
+        "days": 12
+    },
+    {
+        "total": 1000,
+        "healthy": 375,
+        "infected": 1,
+        "dead": 0,
+        "vaccinated": 624,
+        "recovered": 0,
+        "isolated": 0.0,
+        "days": 13
+    },
+    {
+        "total": 1000,
+        "healthy": 343,
+        "infected": 0,
+        "dead": 0,
+        "vaccinated": 656,
+        "recovered": 1,
+        "isolated": 0.0,
+        "days": 14
+    }
+]
