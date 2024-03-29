@@ -11,7 +11,7 @@ class Dot(pygame.sprite.Sprite):
         self.config = Config()
         self.color = ''
 
-        self.dot_size = 4
+        self.dot_size = 12
 
         self.rect = pygame.Rect(random.randint(self.dot_size, self.config.polygon_size['width'] - self.dot_size-5), random.randint(self.dot_size, self.config.polygon_size['height'] - self.dot_size), self.dot_size, self.dot_size)
         # Продолжительность болезни

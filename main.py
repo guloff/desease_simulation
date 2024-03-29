@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import random
 import datetime
 import time
+import os
 
 
 from config import Config
@@ -23,15 +24,15 @@ class Vaccination():
 
         self.clock = pygame.time.Clock()
         pygame.display.set_caption(self.config.caption)
-        # self.screen = pygame.display.set_mode((self.config.screen_size['width'], self.config.screen_size['height']))
-        self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+        self.screen = pygame.display.set_mode((self.config.screen_size['width'], self.config.screen_size['height']))
+        # self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
         pygame.mouse.set_visible(False)
 
         # Поверхности
         # Поверхность полигона
         self.polygon = pygame.Surface([self.config.polygon_size['width'], self.config.polygon_size['height']])
         # Поверхность панели статистики
-        # self.stat = pygame.Surface([self.config.stat_size['width'], self.config.stat_size['height']])
+        self.stat = pygame.Surface([self.config.stat_size['width'], self.config.stat_size['height']])
         self.stat_font = pygame.font.Font(self.config.font_family, self.config.font_size)
 
         # Группы
@@ -80,7 +81,7 @@ class Vaccination():
 
             # Заполнение поверхностей полигона и статистики
             self.polygon.fill(self.config.polygon_bg)
-            # self.stat.fill(self.config.stat_bg)
+            self.stat.fill(self.config.stat_bg)
 
             self._draw_healthy()
             self._draw_recovered()
@@ -113,7 +114,7 @@ class Vaccination():
 
             # Отображение поверхностей полигона и статистики
             self.screen.blit(self.polygon, (0,0))
-            # self.screen.blit(self.stat, (0, self.config.polygon_size['height']))
+            self.screen.blit(self.stat, (0, self.config.polygon_size['height']))
 
             pygame.display.flip()
             self.record_data(len(self.healthy), len(self.infected), len(self.dead), len(self.vaccinated), len(self.recovered), self.config.isolated, self.days_spent)
@@ -125,7 +126,7 @@ class Vaccination():
                 self.stop()
 
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_q:
+                if event.key == pygame.K_ESCAPE:
                     self.stop()
 
     def stop(self):
@@ -152,7 +153,7 @@ class Vaccination():
         with open('stat.json', 'w') as f:
             json.dump(self.data, f, indent=4)
         plt.style.use('classic')
-        # fig, ax = plt.subplots()
+        fig, ax = plt.subplots()
         total = []
         healthy = []
         infected = []
@@ -179,9 +180,16 @@ class Vaccination():
         plt.plot(days, recovered, label = 'Recovered')
 
         plt.legend(loc='upper left', frameon=False)
+
+        # Ensure directory exists
+        script_dir = os.path.dirname(os.path.abspath(__file__))  # Get directory of the script
+        figures_dir = os.path.join(script_dir, 'figures')  # Path to the figures directory
+        os.makedirs(figures_dir, exist_ok=True)  # Create figures directory if it doesn't exist
+
+        # Saving the plot
         today = datetime.datetime.now()
-        plt.savefig(f'figures/fig_{today.year}-{today.month}-{today.day}_{today.hour}-{today.minute}-{today.second}.png')
-        plt.show()
+        file_name = f'fig_{today.year}-{today.month}-{today.day}_{today.hour}-{today.minute}-{today.second}.png'
+        plt.savefig(os.path.join(figures_dir, file_name))
 
     def days_counter(self):
         self.counter += 1
@@ -262,10 +270,10 @@ class Vaccination():
     def _show_stat(self):
         total = self.config.initial_population - len(self.dead)
 
-        # self.stat_text = f'Total: {total} | Healty: {len(self.healthy)} | Infected: {len(self.infected)} | Dead: {len(self.dead)} | Vaccinated: {len(self.vaccinated)} | Recovered: {len(self.recovered)} | Days Spent: {self.days_spent}'
+        self.stat_text = f'Total: {total} | Healty: {len(self.healthy)} | Infected: {len(self.infected)} | Dead: {len(self.dead)} | Vaccinated: {len(self.vaccinated)} | Recovered: {len(self.recovered)} | Days Spent: {self.days_spent}'
         #
-        # self.stat_image = self.stat_font.render(self.stat_text, True, self.config.font_color)
-        # self.stat.blit(self.stat_image, (10,10))
+        self.stat_image = self.stat_font.render(self.stat_text, True, self.config.font_color)
+        self.stat.blit(self.stat_image, (10,10))
 
         # Легенда
         self._show_legend(surface = self.polygon, color = self.config.init_pop_color, text = f'Initial pop.: {self.config.initial_population}', line_x = 180, line_y = 926, line_w = self.config.initial_population, line_h = 6, tx = 6, ty = 920)

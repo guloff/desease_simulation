@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import json
+import os
 
 class Config():
     """The main configurations of the simulation"""
@@ -49,22 +50,26 @@ class Config():
         # Основной экран
         self.caption = "Вакцинирироваться нельзя пускать на самотёк"
         self.FPS = 30
-        self.screen_size = {'width': 1920, 'height': 1080}
+        self.screen_size = {'width': 1400, 'height': 800}
 
         # Высота панели статистики
-        # self.stat_height = 40
+        self.stat_height = 40
 
         # Настройки испытательного полигона
-        # self.polygon_size = {'width': self.screen_size['width'], 'height': self.screen_size['height'] - self.stat_height}
-        self.polygon_size = {'width': self.screen_size['width'], 'height': self.screen_size['height']}
+        self.polygon_size = {'width': self.screen_size['width'], 'height': self.screen_size['height'] - self.stat_height}
+        # self.polygon_size = {'width': self.screen_size['width'], 'height': self.screen_size['height']}
         # self.polygon_bg = (236, 240, 241)
         self.polygon_bg = (6, 0, 1)
 
         # Настройки панели статистики
-        # self.stat_size = {'width': self.screen_size['width'], 'height': self.stat_height}
-        # self.stat_bg = (52, 73, 94)
-        # self.font_family = 'fonts/ShareTechMono-Regular.ttf'
-        # self.font_family = 'fonts/RobotoMono-Regular.ttf'
-        self.font_family = 'fonts/KellySlab-Regular.ttf'
+        self.stat_size = {'width': self.screen_size['width'], 'height': self.stat_height}
+        self.stat_bg = (52, 73, 94)
         self.font_size = 16
         self.font_color = (189, 195, 199)
+
+        # Get the directory of this file (Config.py)
+        config_dir = os.path.dirname(os.path.abspath(__file__))
+        # Construct an absolute path to the font file
+        # self.font_family = os.path.join(config_dir, 'fonts', 'RobotoMono-Regular.ttf')
+        # self.font_family = os.path.join(config_dir, 'fonts', 'KellySlab-Regular.ttf')
+        self.font_family = os.path.join(config_dir, 'fonts', 'ShareTechMono-Regular.ttf')
