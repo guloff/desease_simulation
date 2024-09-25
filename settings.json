@@ -2,8 +2,8 @@
     "inf_rate": 20,
     "mort_rate": 15,
     "reinf_rate": 10,
-    "vaccination": 0,
-    "vac_eff": 90,
+    "vaccination": 10001,
+    "vac_eff": 95,
     "inc_period": 14,
     "init_pop": 1000,
     "isolated": 0.0
